@@ -1,0 +1,25 @@
+<div class="container">
+  <input
+    type="text"
+    placeholder="City(e. g. London)"
+    [(ngModel)]="cityName"
+    #cityInput
+  />
+  <button type="submit" (click)="getWeather(cityInput.value)">
+    Get weather
+  </button>
+  <ng-container *ngIf="currentCityWeather.name !== ''">
+    <h2 class="cityName">{{ currentCity.local_names.en }}</h2>
+    <p>Weather icon placeholder here!</p>
+    <p>{{ currentCityWeather.weather[0].main }}</p>
+    <p>{{ currentCityWeather.weather[0].description }}</p>
+    <p class="temperature">{{ currentCityWeather.main.temp }} °C</p>
+    <p class="feelsLike">
+      feels like: {{ currentCityWeather.main.feels_like }} °C
+    </p>
+    <p>Min. temp: {{ currentCityWeather.main.temp_min }} °C</p>
+    <p>Max. temp: {{ currentCityWeather.main.temp_max }} °C</p>
+    <p>Humidity: {{ currentCityWeather.main.humidity }}%</p>
+    <p>Wind: {{ currentCityWeather.wind.speed }} m/s</p>
+  </ng-container>
+</div>
