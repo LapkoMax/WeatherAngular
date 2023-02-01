@@ -36,6 +36,12 @@
   background-color: #aaaaaa;
 }
 
+.error {
+  color: rgb(215, 0, 0);
+  font-size: 1.05rem;
+  margin-top: 5px;
+}
+
 .cityName,
 .weatherImage,
 .mainWeather,

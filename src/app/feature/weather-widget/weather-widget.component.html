@@ -8,6 +8,7 @@
   <button type="submit" (click)="getWeather(cityInput.value)">
     Get weather
   </button>
+  <p class="error">{{ errorMessage }}</p>
   <ng-container *ngIf="currentCityWeather.name !== ''; else noCity">
     <h2 class="cityName">{{ currentCity.local_names.en }}</h2>
     <img

@@ -14,11 +14,13 @@ export class WeatherWidgetComponent implements OnInit {
   cityName: string = '';
   currentCity: CityLocation = new CityLocation();
   currentCityWeather: CityWeatherData = new CityWeatherData();
+  errorMessage: string = '';
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
     this.cityName = '';
+    this.errorMessage = '';
     this.currentCity =
       (JSON.parse(
         localStorage.getItem('currentCity') ?? '{}'
@@ -38,6 +40,7 @@ export class WeatherWidgetComponent implements OnInit {
       .getCoordinatesByCityName(newCityName)
       .pipe(
         mergeMap((cityLocations: CityLocation[]) => {
+          this.errorMessage = '';
           if (cityLocations.length > 0) {
             this.currentCity = cityLocations[0];
             localStorage.setItem(
@@ -48,7 +51,9 @@ export class WeatherWidgetComponent implements OnInit {
               this.currentCity
             );
           }
-          return of(new CityWeatherData());
+          this.errorMessage = 'Can not find your city, please, try again!';
+          this.cityName = '';
+          return of(this.currentCityWeather);
         })
       )
       .subscribe((cityWeatherData: CityWeatherData) => {
