@@ -52,7 +52,6 @@ export class WeatherWidgetComponent implements OnInit {
         })
       )
       .subscribe((cityWeatherData: CityWeatherData) => {
-        console.log(cityWeatherData);
         this.currentCityWeather = cityWeatherData;
       });
   }

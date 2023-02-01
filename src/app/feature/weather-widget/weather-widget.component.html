@@ -8,18 +8,71 @@
   <button type="submit" (click)="getWeather(cityInput.value)">
     Get weather
   </button>
-  <ng-container *ngIf="currentCityWeather.name !== ''">
+  <ng-container *ngIf="currentCityWeather.name !== ''; else noCity">
     <h2 class="cityName">{{ currentCity.local_names.en }}</h2>
-    <p>Weather icon placeholder here!</p>
-    <p>{{ currentCityWeather.weather[0].main }}</p>
-    <p>{{ currentCityWeather.weather[0].description }}</p>
+    <img
+      src="http://openweathermap.org/img/wn/{{
+        currentCityWeather.weather[0].icon
+      }}@2x.png"
+      alt="weather icon"
+      class="weatherImage"
+    />
+    <p class="mainWeather">{{ currentCityWeather.weather[0].main }}</p>
+    <p class="weatherDescription">
+      {{ currentCityWeather.weather[0].description }}
+    </p>
     <p class="temperature">{{ currentCityWeather.main.temp }} °C</p>
     <p class="feelsLike">
       feels like: {{ currentCityWeather.main.feels_like }} °C
     </p>
-    <p>Min. temp: {{ currentCityWeather.main.temp_min }} °C</p>
-    <p>Max. temp: {{ currentCityWeather.main.temp_max }} °C</p>
-    <p>Humidity: {{ currentCityWeather.main.humidity }}%</p>
-    <p>Wind: {{ currentCityWeather.wind.speed }} m/s</p>
+    <div class="specials">
+      <div class="minTemp">
+        <span class="specialSpan">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2756/2756899.png"
+            alt="min temp"
+            class="specialImage"
+          />
+          min</span
+        >
+        <p class="specialText">{{ currentCityWeather.main.temp_min }} °C</p>
+      </div>
+      <div class="maxTemp">
+        <span class="specialSpan">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/5319/5319733.png"
+            alt="max temp"
+            class="specialImage"
+          />
+          max</span
+        >
+        <p class="specialText">{{ currentCityWeather.main.temp_max }} °C</p>
+      </div>
+      <div class="humidity">
+        <span class="specialSpan">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2903/2903592.png"
+            alt="humidity"
+            class="specialImage"
+          />
+          min</span
+        >
+        <p class="specialText">{{ currentCityWeather.main.humidity }}%</p>
+      </div>
+      <div class="wind">
+        <span class="specialSpan">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2011/2011448.png"
+            alt="wind"
+            class="specialImage"
+          />
+          wind</span
+        >
+        <p class="specialText">{{ currentCityWeather.wind.speed }} m/s</p>
+      </div>
+    </div>
   </ng-container>
+  <ng-template #noCity>
+    <h2 class="cityName">No city</h2>
+  </ng-template>
 </div>
