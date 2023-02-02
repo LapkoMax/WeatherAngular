@@ -5,12 +5,18 @@
     [(ngModel)]="cityName"
     #cityInput
   />
-  <button type="submit" (click)="getWeather(cityInput.value)">
+  <button
+    type="submit"
+    (click)="getWeather(cityInput.value)"
+    [disabled]="cityName == ''"
+  >
     Get weather
   </button>
   <p class="error">{{ errorMessage }}</p>
   <ng-container *ngIf="currentCityWeather.name !== ''; else noCity">
-    <h2 class="cityName">{{ currentCity.local_names.en }}</h2>
+    <h2 class="cityName">
+      {{ currentCity.local_names?.en ?? currentCity.name }}
+    </h2>
     <img
       src="http://openweathermap.org/img/wn/{{
         currentCityWeather.weather[0].icon

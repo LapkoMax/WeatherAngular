@@ -41,7 +41,11 @@ export class WeatherWidgetComponent implements OnInit {
       .pipe(
         mergeMap((cityLocations: CityLocation[]) => {
           this.errorMessage = '';
-          if (cityLocations.length > 0) {
+          if (
+            cityLocations.length > 0 &&
+            (cityLocations[0].local_names?.en !== '' ||
+              cityLocations[0].name !== '')
+          ) {
             this.currentCity = cityLocations[0];
             localStorage.setItem(
               'currentCity',

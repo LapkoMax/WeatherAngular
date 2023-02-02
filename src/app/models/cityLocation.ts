@@ -4,7 +4,7 @@ class CityLocalNames {
 
 export class CityLocation {
   name: string = '';
-  local_names: CityLocalNames = new CityLocalNames();
+  local_names?: CityLocalNames;
   lat: string = '';
   lon: string = '';
 }
