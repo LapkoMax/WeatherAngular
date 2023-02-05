@@ -12,14 +12,14 @@ import { WeatherService } from 'src/app/services/weather-service/weather.service
 })
 export class WeatherWidgetComponent implements OnInit {
   cityName: string = '';
-  currentCity: CityLocation = new CityLocation();
+  currentCity: CityLocation = new CityLocation(); // TODO: модели должны быть интерфейсами а не классами city-location.model.ts (к примеру)
   currentCityWeather: CityWeatherData = new CityWeatherData();
   errorMessage: string = '';
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-    this.cityName = '';
+    this.cityName = ''; // TODO: зачем инициализировать и при объявлении и на ngOnInit? оставь только при объявлении, этого хватит
     this.errorMessage = '';
     this.currentCity =
       (JSON.parse(
@@ -36,12 +36,15 @@ export class WeatherWidgetComponent implements OnInit {
   }
 
   getWeather(newCityName: string): void {
+    console.log('newCityName', newCityName);
     this.weatherService
       .getCoordinatesByCityName(newCityName)
       .pipe(
         mergeMap((cityLocations: CityLocation[]) => {
+          // TODO: mergeMap здесь не нужен скорее всего (по дефолту принято switchMap), почитай switchMap vs mergeMap vs concatMap vs exhaustMap
           this.errorMessage = '';
           if (
+            // TODO: возможно ли определить это в filter pipe? (rxjs почитай)
             cityLocations.length > 0 &&
             (cityLocations[0].local_names?.en !== '' ||
               cityLocations[0].name !== '')

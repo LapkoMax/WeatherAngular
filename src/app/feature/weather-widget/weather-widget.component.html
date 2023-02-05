@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- TODO: оберни в форму и вынеси в отдельный компонент отсюда -->
   <input
     type="text"
     placeholder="City(e. g. London)"
@@ -13,6 +14,7 @@
     Get weather
   </button>
   <p class="error">{{ errorMessage }}</p>
+  <!-- до сюда -->
   <ng-container *ngIf="currentCityWeather.name !== ''; else noCity">
     <h2 class="cityName">
       {{ currentCity.local_names?.en ?? currentCity.name }}
