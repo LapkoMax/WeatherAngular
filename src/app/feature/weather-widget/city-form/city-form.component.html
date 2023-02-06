@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    placeholder="City(e. g. London)"
+    [(ngModel)]="cityName"
+    name="cityName"
+  />
+  <button type="submit" [disabled]="cityName == ''">Get weather</button>
+  <p class="error">{{ errorMessage }}</p>
+</form>

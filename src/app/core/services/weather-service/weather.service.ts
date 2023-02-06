@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CityLocation } from 'src/app/models/cityLocation';
-import { CityWeatherData } from 'src/app/models/cityWeatherData';
+import { CityLocation } from 'src/app/core/models/city-location.model';
+import { CityWeatherData } from 'src/app/core/models/city-weather-data.model';
 
 const APIKey = 'b1f81cbdc552ee9c9d86fcabf9b48999';
 
