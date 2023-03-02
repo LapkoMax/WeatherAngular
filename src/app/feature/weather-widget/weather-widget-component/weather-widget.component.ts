@@ -5,6 +5,9 @@ import { CityLocation } from 'src/app/core/models/city-location.model';
 import { CityWeatherData } from 'src/app/core/models/city-weather-data.model';
 import { WeatherService } from 'src/app/core/services/weather-service/weather.service';
 
+// TODO: назови feature module просто weather (src/feature/weather)
+//       src/feature/weather-widget/weather-widget-component переименуй на src/feature/weather/weather-widget
+
 @Component({
   selector: 'app-weather-widget',
   templateUrl: './weather-widget.component.html',
