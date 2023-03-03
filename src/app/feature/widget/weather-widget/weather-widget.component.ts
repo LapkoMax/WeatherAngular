@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { CityLocation } from 'src/app/core/models/city-location.model';
-import { CityWeatherData } from 'src/app/core/models/city-weather-data.model';
-import { WeatherService } from 'src/app/core/services/weather-service/weather.service';
-
-// TODO: назови feature module просто weather (src/feature/weather)
-//       src/feature/weather-widget/weather-widget-component переименуй на src/feature/weather/weather-widget
+import { CityLocation } from '@core/models/city-location.model';
+import { CityWeatherData } from '@core/models/city-weather-data.model';
+import { WeatherService } from '@core/services/weather-service/weather.service';
 
 @Component({
   selector: 'app-weather-widget',

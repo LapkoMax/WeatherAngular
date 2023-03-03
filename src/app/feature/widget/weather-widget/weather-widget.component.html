@@ -1,0 +1,64 @@
+<div class="container">
+  <app-city-form
+    [errorMessage]="errorMessage"
+    (nameSubmited)="getWeather($event)"
+  ></app-city-form>
+  <ng-container
+    *ngIf="
+      currentCity && currentCityWeather && currentCity.name !== '';
+      else noCity
+    "
+  >
+    <h2 class="container__weatherInfo container__cityName">
+      {{ currentCity | cityName }}
+    </h2>
+    <img
+      src="http://openweathermap.org/img/wn/{{
+        currentCityWeather.weather[0].icon
+      }}@2x.png"
+      alt="weather icon"
+      class="container__weatherInfo container__weatherImage"
+    />
+    <p class="container__weatherInfo container__mainWeather">
+      {{ currentCityWeather.weather[0].main }}
+    </p>
+    <p class="container__weatherInfo container__weatherDescription">
+      {{ currentCityWeather.weather[0].description }}
+    </p>
+    <p class="container__weatherInfo container__temperature">
+      {{ currentCityWeather.main.temp }} °C
+    </p>
+    <p class="container__weatherInfo container__feelsLike">
+      feels like: {{ currentCityWeather.main.feels_like }} °C
+    </p>
+    <div class="container__specials">
+      <app-special-image
+        imageAlt="min temp"
+        imageSrc="https://cdn-icons-png.flaticon.com/512/2756/2756899.png"
+        imageText="{{ currentCityWeather.main.temp_min }} °C"
+        imageDescription="min"
+      ></app-special-image>
+      <app-special-image
+        imageAlt="max temp"
+        imageSrc="https://cdn-icons-png.flaticon.com/512/5319/5319733.png"
+        imageText="{{ currentCityWeather.main.temp_max }} °C"
+        imageDescription="max"
+      ></app-special-image>
+      <app-special-image
+        imageAlt="humidity"
+        imageSrc="https://cdn-icons-png.flaticon.com/512/2903/2903592.png"
+        imageText="{{ currentCityWeather.main.humidity }}%"
+        imageDescription="min"
+      ></app-special-image>
+      <app-special-image
+        imageAlt="wind"
+        imageSrc="https://cdn-icons-png.flaticon.com/512/2011/2011448.png"
+        imageText="{{ currentCityWeather.wind.speed }} m/s"
+        imageDescription="wind"
+      ></app-special-image>
+    </div>
+  </ng-container>
+  <ng-template #noCity>
+    <h2 class="weatherInfo cityName">No city</h2>
+  </ng-template>
+</div>
