@@ -5,10 +5,15 @@
 }
 
 .container {
-  position: relative;
+  position: absolute;
+  top: 23%;
+  left: 43%;
+  margin-top: -50px;
+  margin-left: -50px;
   display: inline-block;
   justify-content: center;
   border-radius: 5px;
+  margin: auto;
   padding: 10px 5px;
   width: 290px;
   background-color: rgba(100, 0, 100, 0.65);
